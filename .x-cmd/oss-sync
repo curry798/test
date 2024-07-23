@@ -1,0 +1,5 @@
+# shellcheck shell=dash
+eval "$(curl https://get.x-cmd.com)"
+
+x qywx --cfg "webhook=$QYWX_BOT_RELEASE_WEBHOOK"
+x qywx --send --markdown  "### 🔔 已同步 oss"

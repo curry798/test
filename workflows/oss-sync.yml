@@ -1,0 +1,18 @@
+name: qywx test
+on:
+  workflow_dispatch:
+
+jobs:
+  release-worker:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      QYWX_BOT_RELEASE_WEBHOOK: ${{ secrets.QYWX_BOT_RELEASE_WEBHOOK }}
+    steps:
+      - name: main
+        with:
+          code: |
+            eval "$(curl https://get.x-cmd.com)"            
+
+            x qywx --cfg "webhook=$QYWX_BOT_RELEASE_WEBHOOK"
+            x qywx --send --markdown  "### 🔔 已同步 oss"
