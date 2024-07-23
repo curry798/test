@@ -9,10 +9,10 @@ jobs:
     env:
       QYWX_BOT_RELEASE_WEBHOOK: ${{ secrets.QYWX_BOT_RELEASE_WEBHOOK }}
     steps:
-      - name: main
-        with:
-          code: |
+      - name: install x-cmd
+        run: |
             eval "$(curl https://get.x-cmd.com)"            
-
+      - name: test
+        run: |
             x qywx --cfg "webhook=$QYWX_BOT_RELEASE_WEBHOOK"
             x qywx --send --markdown  "### 🔔 已同步 oss"
