@@ -12,6 +12,8 @@ jobs:
       - name: main
         run: |
             eval "$(curl https://get.x-cmd.com)"
-
+            x:info "send message"
+            x log +qywx
+            x log +http
             x qywx --cfg "webhook=$QYWX_BOT_RELEASE_WEBHOOK"
             x qywx --send --markdown  "### 🔔 已同步 oss"
